@@ -1,0 +1,9 @@
+[submodule "camera-frontend"]
+	path = camera-frontend
+	url = https://github.com/mattias-wiberg/camera-frontend
+[submodule "timelaps-frontend"]
+	path = timelaps-frontend
+	url = https://github.com/mattias-wiberg/timelaps-frontend
+[submodule "timelaps-service"]
+	path = timelaps-service
+	url = https://github.com/mattias-wiberg/timelaps-service
