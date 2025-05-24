@@ -1,0 +1,46 @@
+services:
+  camera-frontend:
+    build:
+      context: ./camera-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+  timelaps-frontend:
+    build:
+      context: ./timelaps-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    networks:
+      - app-network
+
+  timelaps-service:
+    build:
+      context: ./timelaps-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    volumes:
+      - ./timelaps-service/uploads:/app/uploads
+
+  nginx-gateway:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-gateway.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - camera-frontend
+      - timelaps-frontend
+      - timelaps-service
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
