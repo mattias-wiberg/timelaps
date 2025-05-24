@@ -17,9 +17,6 @@ spec:
         image: 192.168.10.153:32000/camera-frontend:latest
         ports:
         - containerPort: 80
-        env:
-        - name: VITE_API_BASE_URL
-          value: "http://192.168.10.153/api"
 ---
 apiVersion: v1
 kind: Service
@@ -52,9 +49,6 @@ spec:
         image: 192.168.10.153:32000/timelaps-frontend:latest
         ports:
         - containerPort: 80
-        env:
-        - name: VITE_API_BASE_URL
-          value: "http://192.168.10.153/api"
 ---
 apiVersion: v1
 kind: Service
